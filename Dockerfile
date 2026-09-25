@@ -13,6 +13,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-ins
   && pip3 install --break-system-packages --root-user-action=ignore fontTools Pillow \
   && rm -rf /var/lib/apt/lists/*
 
-COPY build.sh /usr/local/bin/build.sh
-RUN chmod +x /usr/local/bin/build.sh
-ENTRYPOINT ["build.sh"]
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]

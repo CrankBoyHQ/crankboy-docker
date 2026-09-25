@@ -1,6 +1,6 @@
 #!/bin/sh
-# Entrypoint for the crankboy build container.
-# Expects the crankboy-app repo mounted at /work with the toolchain
+# Entrypoint for the build container.
+# Expects the project repo mounted at /work with the toolchain
 # submodule checked out at /work/toolchain.
 #
 # Extracted toolchains are cached in /opt/cache (a mounted volume) so
