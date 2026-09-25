@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM debian:trixie-slim
+FROM debian:trixie-slim
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
   make \
@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-ins
   ca-certificates \
   libpng16-16 \
   zlib1g \
-    && pip3 install --break-system-packages --root-user-action=ignore fontTools Pillow \
+  && pip3 install --break-system-packages --root-user-action=ignore fontTools Pillow \
   && rm -rf /var/lib/apt/lists/*
 
 COPY build.sh /usr/local/bin/build.sh
