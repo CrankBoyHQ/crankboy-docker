@@ -33,8 +33,9 @@ else
   echo "==> extracting toolchain (one-time, cached afterwards)"
   rm -rf "$CACHE/gcc" "$CACHE/sdk"
   mkdir -p "$CACHE/gcc" "$CACHE/sdk"
-  tar -xjf "$GCC_TARBALL" -C "$CACHE/gcc" --strip-components=1
-  tar -xzf "$SDK_TARBALL" -C "$CACHE/sdk" --strip-components=1
+  # -m: skip mtime restore (hardlink utime fails on lima 9p mounts)
+  tar -xjmf "$GCC_TARBALL" -C "$CACHE/gcc" --strip-components=1
+  tar -xzmf "$SDK_TARBALL" -C "$CACHE/sdk" --strip-components=1
   printf '%s\n' "$KEY" > "$STAMP"
 fi
 
